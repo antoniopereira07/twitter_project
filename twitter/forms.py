@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post
+from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -16,6 +17,20 @@ class UserRegisterForm(UserCreationForm):
         model = User
         fields = ['first_name', 'username', 'email', 'password1', 'password2']
 
+
+class UserLoginForm(forms.Form):
+    username = forms.CharField(
+        label='Nome de Usuário',
+        widget=forms.TextInput(attrs={'placeholder': 'Nome de Usuário'})
+    )
+    password = forms.CharField(
+        label='Senha',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Senha'})
+    )
+
+
+
+
 class PostForm(forms.ModelForm):
     content = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control w-100', 'id':'cotentsBox', 'rows':'3', 'placeholder':'O que está acontecendo?'}))
 
@@ -23,19 +38,12 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['content']
 
+class UserUpdateForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields = ['first_name', 'username']
 
-
-# class UserLoginForm(forms.Form):
-#     username = forms.CharField(label='Nome de Usuário', widget=forms.TextInput(attrs={'placeholder': 'Nome de Usuário'}))
-#     password = forms.CharField(label='Senha', widget=forms.PasswordInput(attrs={'placeholder': 'Senha'}))
-
-
-# class UserUpdateForm(forms.ModelForm):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.fields['username'].widget.attrs['placeholder'] = 'Nome de Usuário'
-#         self.fields['password'].widget.attrs['placeholder'] = 'Senha'
-
-#     class Meta:
-#         model = User
-#         fields = ['username', 'password']
+class ProfileUpdateForm(forms.ModelForm):
+	class Meta:
+		model = Profile
+		fields = ['image', 'bio']

@@ -1,0 +1,46 @@
+{% extends 'twitter/layout.html' %}
+{% load custom_filters %}
+{% block content %}
+
+<div id="main" class="container-fluid d-flex">
+    <div class="">
+        <div id="inputTweetArea" class="tweet-wrap2">
+            <div class="d-flex">
+                <div class="col-xs">
+                    <!-- Image form -->
+                    <img src="{{ request.user.profile.image.url }}" alt="" class="avatar">
+                    <!-- Formulario -->
+                </div>
+
+                <!-- Formulario -->
+                <form class="col pr-0" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="input-wrapper">
+                        <label>Nome</label>
+                        {{ user_form.first_name | add_placeholder:"Nome" }}
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="user-name-id">Nome de usuário</label>
+                        {{ user_form.username | add_placeholder:"Nome de Usuário"}}
+                    </div>
+                    <div class="input-wrapper">
+                        <label>Biografia</label>
+                        {{ profile_form.bio | add_placeholder:"Biografia" }}
+                    </div>
+                    <div class="input-wrapper">
+                        {{ profile_form.image }}
+                    </div>
+                    <div class="input-wrapper">
+                    </div>
+
+                    <button class="twitter-btn">Atualizar</button>
+                </form>
+                <!-- Formulario -->
+
+            </div>
+        </div>
+    </div>
+    <!-- End Center -->
+</div>
+
+{% endblock content %}
