@@ -50,7 +50,13 @@ img {
 }
 
 #inputTweetArea {
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  /* width: 640px; */
+  width: 100%;
+}
+
+label {
+  border-radius: 5px;
 }
 
 #leftBtn {
@@ -183,6 +189,7 @@ a:link {
 /* LOGIN PAGE*/
 .login-page {
   background: #fff;
+  border-radius: 15px;
 }
 
 .twitter-login-box {
@@ -241,7 +248,7 @@ a:link {
   background-color: #1e96eb;
   border: none;
   width: 100%;
-  padding: 15px;
+  padding: 14px;
   border-radius: 30px;
   color: #fff;
   font-size: 17px;
