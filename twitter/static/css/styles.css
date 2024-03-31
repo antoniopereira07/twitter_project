@@ -198,6 +198,10 @@ a:link {
   text-align: center;
 }
 
+.text {
+  text-align: center;
+}
+
 .input-wrapper {
   margin-bottom: 15px;
 }
