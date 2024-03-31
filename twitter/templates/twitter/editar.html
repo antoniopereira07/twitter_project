@@ -3,7 +3,7 @@
 {% block content %}
 
 <div id="main" class="container-fluid d-flex">
-    <div class="">
+    <div class="login-page mt-5 mb-5 pt-4 pl-4">
         <div id="inputTweetArea" class="tweet-wrap2">
             <div class="d-flex">
                 <div class="col-xs">
@@ -13,24 +13,21 @@
                 </div>
 
                 <!-- Formulario -->
-                <form class="col pr-0" method="post" enctype="multipart/form-data">
+                <form class="col pt-1 pr-4 pb-4" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="input-wrapper">
-                        <label>Nome</label>
-                        {{ user_form.first_name | add_placeholder:"Nome" }}
+                        <label for="first_name">Nome</label>
+                        <input type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="Primeiro Nome" value="{{ user_form.first_name.value }}">
                     </div>
                     <div class="input-wrapper">
-                        <label for="user-name-id">Nome de usuário</label>
-                        {{ user_form.username | add_placeholder:"Nome de Usuário"}}
+                        <label for="username">Nome de Usuário</label>
+                        <input type="text" id="username" name="username" autocomplete="given-name" placeholder="Nome de Usuário" value="{{ user_form.username.value }}">
                     </div>
                     <div class="input-wrapper">
-                        <label>Biografia</label>
                         {{ profile_form.bio | add_placeholder:"Biografia" }}
                     </div>
                     <div class="input-wrapper">
                         {{ profile_form.image }}
-                    </div>
-                    <div class="input-wrapper">
                     </div>
 
                     <button class="twitter-btn">Atualizar</button>
