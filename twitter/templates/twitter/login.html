@@ -1,5 +1,5 @@
 {% extends 'twitter/layout.html' %}
-
+{% load custom_filters %}
 {% block content %}
 
 <body class="login-page">
@@ -13,14 +13,15 @@
         <form method="post">
             {% csrf_token %}
             <div class="input-wrapper">
-                <!-- <label for="user-name-id">Nome de Usuário</label> -->
-                {{ form.username }}
+                {{ form.username | add_placeholder:"Nome de Usuário" }}
             </div>
 
             <div class="input-wrapper">
-                <!-- <label for="password-id">Password</label> -->
-                {{ form.password }}
+                {{ form.password | add_placeholder:"Senha" }}
             </div>
+            {% if form.errors %}
+            <p>Nome do Usuário ou Senha não estão corretos.</p>
+            {% endif %}
 
             <button class="twitter-btn">Conecte-se</button>
         </form>
