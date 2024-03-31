@@ -13,13 +13,13 @@
         <form method="post">
             {% csrf_token %}
             <div class="input-wrapper">
-                {{ form.first_name }}
+                <input type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="Primeiro Nome" value="{{ user_form.first_name.value }}">
             </div>
             <div class="input-wrapper">
-                {{ form.username }} 
+                <input type="text" id="username" name="username" autocomplete="given-name" placeholder="Nome de Usuário" value="{{ user_form.username.value }}">
             </div>
             <div class="input-wrapper">
-                {{ form.email }}
+                <input type="text" id="email" name="email" autocomplete="given-name" placeholder="Email" value="{{ user_form.email.value }}">
             </div>
 
             <div class="input-wrapper">
