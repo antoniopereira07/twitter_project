@@ -2,7 +2,7 @@
 {% load custom_filters %}
 {% block content %}
 
-<body class="login-page">
+<body class="login-page m-3">
     <div class="twitter-login-box">
         <header>
             <img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-jumbo-v4.jpg?quality=90&auto=webp"
@@ -12,18 +12,25 @@
 
         <form method="post">
             {% csrf_token %}
-            <div class="input-wrapper">
+
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+
+            <div class="input-wrapper pb-2">
                 {{ form.username | add_placeholder:"Nome de Usuário" }}
             </div>
 
-            <div class="input-wrapper">
+            <div class="input-wrapper pb-2">
                 {{ form.password | add_placeholder:"Senha" }}
             </div>
             {% if form.errors %}
-            <p>Nome do Usuário ou Senha não estão corretos.</p>
+            <p class="alert">Nome do Usuário ou Senha não estão corretos.</p>
             {% endif %}
 
-            <button class="twitter-btn">Conecte-se</button>
+            <button class="twitter-btn pb-2">Conecte-se</button>
         </form>
 
         <div class="footer">

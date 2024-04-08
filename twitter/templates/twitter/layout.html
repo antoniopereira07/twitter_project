@@ -21,22 +21,20 @@
 
     <div class="container-fluid" style="padding: 0;">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" style="color: #fff;" href="#">
+            <a class="navbar-brand d-flex" style="color: white;" href="#">
                 <!-- Twitter logo -->
                 <img src="{% static 'img/twitter-brands.svg' %}" width="30" height="30" class="d-inline-block align-top"
                     alt="">
                 <!-- Twitter logo -->
-                Projeto Twitter
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="hi mr-auto">
+                <div class="pl-2">
+                    Projeto Twitter
+                </div>
 
-                </ul>
                 <!-- Nav Bar -->
-                <a href="{% url 'home' %}" class="btn text-#fff my-2 my-sm-0" type="submit">Início</a>
-                <a href="{% url 'login' %}" class="btn text-#fff my-2 my-sm-0" type="submit">Sair</a>
+                <a href="{% url 'home' %}" class="btn text-white my-2 my-sm-0" type="submit">Início</a>
+                <a href="{% url 'login' %}" class="btn text-white my-2 my-sm-0" type="submit">Sair</a>
                 <!-- Nav Bar -->
-            </div>
+            </a>
         </nav>
     </div>
 
@@ -48,17 +46,15 @@
                 <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
                     <img class="card-img-top rounded-circle"
                         style="width:60%; position: relative;left: 62px;padding-top: 20px;"
-                        src="../../static/img/toin.jpg"
+                        src="{{ request.user.profile.image.url }}"
                         alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title font-weight-bold">Antonio</h5>
-                        <h6 class="card-title font-weight-bold">@Pereira</h6>
-
-
-                        <p class="card-text">Você sabe quem eu sou? </p>
+                        <h5 class="card-title font-weight-bold">{{ request.user.first_name }}</h5>
+                        <h6 class="card-title font-weight-bold">@{{ request.user }}</h6>
+                        <p class="card-text">{{ request.user.profile.bio }}</p>
                         <h6 class="card-title font-weight-bold">
-                            100 Seguidores
-                            100 Seguindo
+                            {{ request.user.profile.followers.count }} Seguidores
+                            {{ request.user.profile.following.count }} Seguindo
                         </h6>
                         <a href="#" class="btn  text-white rounded-pill">Meu perfil</a>
                     </div>
@@ -66,7 +62,7 @@
                 </div>
                 <button id="addATweetLeft" onclick="addTweet()" type="button"
                     style="border-radius: 30px; font-size: 1.1rem; font-weight:bold;"
-                    class="btn btn-lg btn-block mt-4 text-#fff ">Editar meu perfil</button>
+                    class="btn btn-lg btn-block mt-4 text-white ">Editar meu perfil</button>
             </div>
         </div>
         <!-- End Barra Esquerda -->
@@ -125,7 +121,7 @@
                     <div class="tweet-info-counts">
 
                         <div class="comments">
-                            <button style="background: #fff; border: none;">
+                            <button style="background: white; border: none;">
                                 <svg class="feather feather-message-circle sc-dnqmqq jxshSx"
                                     xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -139,7 +135,7 @@
                         </div>
 
                         <div class="retweets">
-                            <button style="background: #fff; border: none;">
+                            <button style="background: white; border: none;">
                                 <svg class="feather feather-repeat sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                                     width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -153,7 +149,7 @@
                         </div>
 
                         <div class="likes">
-                            <button style="background: #fff; border: none;">
+                            <button style="background: white; border: none;">
                                 <svg class="feather feather-heart sc-dnqmqq jxshSx" xmlns="http://www.w3.org/2000/svg"
                                     width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -167,7 +163,7 @@
 
                         <!-- DELETE -->
                         <div class="trash">
-                            <a href="#" style="background: #fff; border: none;">
+                            <a href="#" style="background: white; border: none;">
                                 <i class="fa fa-trash-o" style="color:#657786; font-size: 20px" aria-hidden="true"></i>
                             </a>
                         </div>

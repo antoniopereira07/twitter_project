@@ -1,8 +1,8 @@
 {% extends 'twitter/layout.html' %}
-
+{% load custom_filters %}
 {% block content %}
 
-<body class="login-page">
+<body class="login-page m-3">
     <div class="twitter-login-box">
         <header>
             <img src="https://static01.nyt.com/images/2014/08/10/magazine/10wmt/10wmt-jumbo-v4.jpg?quality=90&auto=webp"
@@ -12,16 +12,23 @@
 
         <form method="post">
             {% csrf_token %}
-            <div class="input-wrapper">
-                <input type="text" id="first_name" name="first_name" autocomplete="given-name" placeholder="Primeiro Nome" value="{{ user_form.first_name.value }}">
-            </div>
-            <div class="input-wrapper">
-                <input type="text" id="username" name="username" autocomplete="given-name" placeholder="Nome de Usuário" value="{{ user_form.username.value }}">
-            </div>
-            <div class="input-wrapper">
-                <input type="text" id="email" name="email" autocomplete="given-name" placeholder="Email" value="{{ user_form.email.value }}">
-            </div>
 
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% if form.errors %}
+            {% endif %}
+            <div class="input-wrapper">
+                {{ form.first_name }}
+            </div>
+            <div class="input-wrapper">
+                {{ form.username }}
+            </div>
+            <div class="input-wrapper">
+                {{ form.email }}
+            </div>
             <div class="input-wrapper">
                 {{ form.password1 }}
             </div>
@@ -29,11 +36,11 @@
                 {{ form.password2 }}
             </div>
 
-            <button class="twitter-btn">Registra-se</button>
+            <button class="twitter-btn" type="submit">Registra-se</button>
         </form>
 
         <div class="footer">
-            <a href="#">Você já tem uma conta? Conecte-se</a>
+            <a href="{% url 'login' %}">Você já tem uma conta? Conecte-se</a>
         </div>
 
     </div>
