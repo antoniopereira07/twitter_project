@@ -32,10 +32,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'twitter.apps.TwitterConfig',
-    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
+    'twitter.apps.TwitterConfig',
+    'django.contrib.humanize',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
