@@ -20,18 +20,15 @@ const getData = async () => {
 getData();
 
 let textArea = document.getElementById('contentsBox');
+let charCountArea = document.getElementById('charCountArea');
 let tweetList = []
 let id = 0;
 
 let countChar = () => {
-	let remainingChar = 140 - textArea.value.length;
-	if (remainingChar < 0) {
-		document.getElementById('charCountArea').innerHTML = `${remainingChar}`.fontcolor('red');
-
-	} else {
-		document.getElementById('charCountArea').innerHTML = `${remainingChar}`.fontcolor('white');
-
-	}
+    let remainingChar = 140 - textArea.value.length;
+    
+	charCountArea.innerHTML = remainingChar;
+	charCountArea.style.color = remainingChar < 0 ? 'red' : 'white';
 }
 
 textArea.addEventListener('input', countChar);
