@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .models import Profile, Post
+from .models import Profile, Post, Relationship
+
 from .forms import UserRegisterForm, PostForm, ProfileUpdateForm, UserUpdateForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
+@login_required
 def home(request):
     posts = Post.objects.all()
     form = PostForm()
@@ -21,17 +24,29 @@ def home(request):
     context = {'posts': posts, 'form': form}
     return render(request, 'twitter/newsfeed.html', context)
 
+from django.shortcuts import redirect
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Conta criada para {username}! Faça o login agora.')
+
+            # Cria um novo perfil para o novo usuário
+            Profile.objects.create(user=user)
+            
+            return redirect('login')
+        else:
+            messages.error(request, 'A Senha deve ter 8 Caracteres incluindo números e letras.')
     else:
         form = UserRegisterForm()
 
     context = {'form' : form}
     return render(request, 'twitter/register.html', context)
+
+
 
 def delete(request, post_id):
     post = Post.objects.get(id=post_id)
@@ -61,5 +76,21 @@ def editar(request):
     context = {'user_form' : user_form, 'profile_form' : profile_form}
     return render(request, 'twitter/editar.html', context)
 
+@login_required
+def follow(request, username):
+    current_user = request.user
+    to_user = User.objects.get(username=username)
+    to_user_id = to_user
+    rel = Relationship(from_user=current_user, to_user=to_user_id)
+    rel.save()
+    return redirect('home')
 
+@login_required
+def unfollow(request, username):
+    current_user = request.user
+    to_user = User.objects.get(username=username)
+    to_user_id = to_user.id
+    rel = Relationship.objects.get(from_user=current_user.id, to_user=to_user_id)
+    rel.delete()
+    return redirect('home')
 
