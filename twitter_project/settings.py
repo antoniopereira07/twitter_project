@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
-load_dotenv()
-
+# from dotenv import load_dotenv
+# load_dotenv()
+import dotenv
+dotenv.load_dotenv('.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -97,6 +98,12 @@ DATABASES = {
     }
 }
 
+print('SQL_ENGINE')
+print('SQL_DATABASE')
+print('SQL_USER')
+print('SQL_PASSWORD')
+print('SQL_HOST')
+print('SQL_PORT')
 
 
 # Password validation
