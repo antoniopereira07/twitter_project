@@ -1,16 +1,10 @@
-# build_files.sh
-# pip install -r requirements.txt
+#!/bin/bash
 
-# make migrations
-# python3.12 manage.py migrate 
-# python3.12 manage.py collectstatic
-
-build_files.sh
-
-echo " BUILD START"
-
+# Instalação das Dependências
 python3.9 -m pip install -r requirements.txt
 
-python3.9 manage.py collectstatic --noinput --clear
+# Migrações do Banco de Dados
+python3.9 manage.py migrate
 
-echo " BUILD END"
+# Coleta de Arquivos Estáticos
+python3.9 manage.py collectstatic --noinput --clear
