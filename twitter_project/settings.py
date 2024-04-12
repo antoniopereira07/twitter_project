@@ -14,8 +14,7 @@ from pathlib import Path
 import os
 # from dotenv import load_dotenv
 # load_dotenv()
-import dotenv
-dotenv.load_dotenv('.env')
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,21 +88,14 @@ WSGI_APPLICATION = 'twitter_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.environ.get("SQL_ENGINE"),
-        'NAME': os.environ.get("SQL_DATABASE"),
-        'USER': os.environ.get("SQL_USER"),
-        'PASSWORD': os.environ.get("SQL_PASSWORD"),
-        'HOST': os.environ.get("SQL_HOST"),
-        'PORT': os.environ.get("SQL_PORT"),
+        'ENGINE': "django.db.backends.postgresql",
+        'NAME': "postgres",
+        'USER': "postgres.kirydftrncfhselalucg",
+        'PASSWORD': "a95469294%#",
+        'HOST': "aws-0-sa-east-1.pooler.supabase.com",
+        'PORT': "5432",
     }
 }
-
-print('SQL_ENGINE')
-print('SQL_DATABASE')
-print('SQL_USER')
-print('SQL_PASSWORD')
-print('SQL_HOST')
-print('SQL_PORT')
 
 
 # Password validation
