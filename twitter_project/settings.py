@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-h4*purb=h2oyj4q*ns(uj2t!4bu-p*y1!_dfr(ah3e6tq6!r07
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', '.railway.app']
 
 
 # Application definition
@@ -86,14 +86,27 @@ WSGI_APPLICATION = 'twitter_project.wsgi.application'
 #     }
 # }
 
+# supabase
+# DATABASES = {
+#     'default': {
+#         'ENGINE': "django.db.backends.postgresql",
+#         'NAME': "postgres",
+#         'USER': "postgres.kirydftrncfhselalucg",
+#         'PASSWORD': "a95469294%#",
+#         'HOST': "aws-0-sa-east-1.pooler.supabase.com",
+#         'PORT': "5432",
+#     }
+# }
+
+
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql",
-        'NAME': "postgres",
-        'USER': "postgres.kirydftrncfhselalucg",
-        'PASSWORD': "a95469294%#",
-        'HOST': "aws-0-sa-east-1.pooler.supabase.com",
-        'PORT': "5432",
+        'NAME': "railway",
+        'USER': "postgres",
+        'PASSWORD': "PpwrDGmrduSVCDbhxijKUDKEMZuTaecM",
+        'HOST': "viaduct.proxy.rlwy.net",
+        'PORT': "46389",
     }
 }
 
@@ -132,7 +145,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
@@ -146,5 +159,7 @@ LOGIN_URL = 'login'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+#     ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
