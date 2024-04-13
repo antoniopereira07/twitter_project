@@ -87,28 +87,28 @@ WSGI_APPLICATION = 'twitter_project.wsgi.application'
 # }
 
 # supabase
-# DATABASES = {
-#     'default': {
-#         'ENGINE': "django.db.backends.postgresql",
-#         'NAME': "postgres",
-#         'USER': "postgres.kirydftrncfhselalucg",
-#         'PASSWORD': "a95469294%#",
-#         'HOST': "aws-0-sa-east-1.pooler.supabase.com",
-#         'PORT': "5432",
-#     }
-# }
-
-
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql",
-        'NAME': "railway",
-        'USER': "postgres",
-        'PASSWORD': "PpwrDGmrduSVCDbhxijKUDKEMZuTaecM",
-        'HOST': "viaduct.proxy.rlwy.net",
-        'PORT': "46389",
+        'NAME': "postgres",
+        'USER': "postgres.kirydftrncfhselalucg",
+        'PASSWORD': "a95469294%#",
+        'HOST': "aws-0-sa-east-1.pooler.supabase.com",
+        'PORT': "5432",
     }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': "django.db.backends.postgresql",
+#         'NAME': "railway",
+#         'USER': "postgres",
+#         'PASSWORD': "PpwrDGmrduSVCDbhxijKUDKEMZuTaecM",
+#         'HOST': "viaduct.proxy.rlwy.net",
+#         'PORT': "46389",
+#     }
+# }
 
 
 # Password validation
