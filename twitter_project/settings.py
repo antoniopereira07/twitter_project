@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'twitter_project.wsgi.application'
 #     }
 # }
 
-# supabase
+# mysql
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.mysql",
