@@ -1,3 +1,0 @@
-build:
-  env: python3.9
-  script: python manage.py collectstatic --noinput
