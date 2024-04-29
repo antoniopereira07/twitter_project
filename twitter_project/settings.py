@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-# from dotenv import load_dotenv
-# load_dotenv()
+from dotenv import load_dotenv
+load_dotenv()
+# import dotenv
+# dotenv.load_dotenv(".env")
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,12 +26,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-h4*purb=h2oyj4q*ns(uj2t!4bu-p*y1!_dfr(ah3e6tq6!r07'
+# SECRET_KEY = os.getenv("SECRET_KEY")
+# SECRET_KEY = 'django-insecure-h4*purb=h2oyj4q*ns(uj2t!4bu-p*y1!_dfr(ah3e6tq6!r07'
+
+SECRET_KEY = os.environ.get("SECRET_KEY", "AbcDef")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','antoniodev07.pythonanywhere.com', '.vercel.app', '.now.sh', '.railway.app']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','antoniodev07.pythonanywhere.com']
 
 
 # Application definition
@@ -79,25 +84,44 @@ WSGI_APPLICATION = 'twitter_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# mysql
 DATABASES = {
     'default': {
-        'ENGINE': "django.db.backends.mysql",
-        'NAME': "mydb",
-        'USER': "root",
-        'PASSWORD': "admin",
-        'HOST': "localhost",
-        'PORT': "3306",
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
+# mysql
+# DATABASES = {
+#     'default': {
+#         'ENGINE': "django.db.backends.mysql",
+#         'NAME': "mydb",
+#         'USER': "myuser",
+#         'PASSWORD': "mypassword",
+#         'HOST': "localhost",
+#         'PORT': "3306",
+#     }
+# }
+
+
+DATABASES = {
+    "default": {
+        "ENGINE": os.environ.get("MYSQL_ENGINE:", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("MYSQL_DATABASE:", BASE_DIR / "db.sqlite3"),
+        "USER": os.environ.get("MYSQL_USER:", "myuser"),
+        "PASSWORD": os.environ.get("MYSQL_PASSWORD:", "mypassword"),
+        "HOST": os.environ.get("MYSQL_HOST:", "localhost"),
+        "PORT": os.environ.get("MYSQL_PORT:", "3306"),
+    }
+}
+
+print("SECRET_KEY")
+print("MYSQL_ENGINE")
+print("MYSQL_DATABASE")
+print("MYSQL_USER")
+print("MYSQL_PASSWORD")
+print("MYSQL_HOST")
+print("MYSQL_PORT")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

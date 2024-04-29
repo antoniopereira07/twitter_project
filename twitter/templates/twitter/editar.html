@@ -2,13 +2,13 @@
 {% load custom_filters %}
 {% block content %}
 
-<div id="main" class="container-fluid d-flex">
-    <div class="login-page mt-5 mb-5 pt-4 pl-4">
+<div id="main" class="container-fluid d-flex mt-4">
+    <div class="login-page mt-5 mb-5 pt-4 pl-4" style="border-radius: 20px;">
         <div id="inputTweetArea" class="tweet-wrap2">
             <div class="d-flex">
                 <div class="col-xs">
                     <!-- Image form -->
-                    <img src="{{ request.user.profile.image.url }}" alt="" class="avatar">
+                    <img src="{{ request.user.profile.image.url }}" alt="" class="avatar rounded-circle">
                     <!-- Formulario -->
                 </div>
 

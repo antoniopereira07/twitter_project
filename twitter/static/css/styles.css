@@ -50,21 +50,18 @@ img {
 }
 
 #inputTweetArea {
-  width: 100%;
-}
-
-label {
-  border-radius: 5px;
+  /* width: 100%; */
+  border-radius: 20px;
 }
 
 #leftBtn {
-  width: 50%;
+  width: 100%;
   text-align: left;
   padding: 0;
 }
 
 #rightBtn {
-  width: 50%;
+  width: 100%;
   text-align: right;
   padding: 0;
 }
@@ -73,15 +70,12 @@ label {
   max-width: 490px;
   background: #fff;
   margin: 0 auto;
-  margin-top: 50px;
-  border-radius: 3px;
-  padding: 30px;
+  margin-top: 25px;
+  border-radius: 20px;
+  padding: 20px;
   border-bottom: 1px solid #e6ecf0;
   border-top: 1px solid #e6ecf0;
-}
-
-.tweet-card {
-  display: block;
+  margin-bottom: 10px;
 }
 
 .tweet-header {
@@ -103,6 +97,12 @@ label {
 .tweet-header-info p {
   font-weight: normal;
   margin-top: 5px;
+  width: 300px;
+}
+
+.tweet-content {
+  /* word-wrap: break-word; */
+  overflow-wrap: break-word;
 }
 
 .tweet-img-wrap {
@@ -125,41 +125,8 @@ label {
   margin-right: 10px;
 }
 
-@media screen and (max-width: 430px) {
-  body {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .login-page {
-    background: #fff;
-    border-radius: 15px;
-  }
-
-  .tweet-header {
-    flex-direction: column;
-  }
-
-  .tweet-header img {
-    margin-bottom: 20px;
-  }
-
-  .tweet-header-info p {
-    margin-bottom: 30px;
-  }
-
-  .tweet-img-wrap {
-    padding-left: 0;
-  }
-
-  .tweet-info-counts {
-    display: flex;
-    margin-left: 0;
-  }
-
-  .tweet-info-counts div {
-    margin-right: 10px;
-  }
+#tweetCards {
+  padding-bottom: 15px;
 }
 
 .btn {
@@ -196,7 +163,7 @@ a:link {
 /* LOGIN PAGE*/
 .login-page {
   background: #fff;
-  border-radius: 15px;
+  /* border-radius: 15px; */
 }
 
 .twitter-login-box {
@@ -299,4 +266,41 @@ a:link {
 .twitter-login-box .footer a {
   color: #1e96eb;
   text-decoration: none;
+}
+
+@media screen and (max-width: 430px) {
+  body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .login-page {
+    background: #fff;
+    border-radius: 15px;
+  }
+
+  .tweet-header {
+    flex-direction: column;
+  }
+
+  .tweet-header img {
+    margin-bottom: 20px;
+  }
+
+  .tweet-header-info p {
+    margin-bottom: 30px;
+  }
+
+  .tweet-img-wrap {
+    padding-left: 0;
+  }
+
+  .tweet-info-counts {
+    display: flex;
+    margin-left: 0;
+  }
+
+  .tweet-info-counts div {
+    margin-right: 10px;
+  }
 }

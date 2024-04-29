@@ -25,6 +25,7 @@ class Post(models.Model):
     timestamp = models.DateTimeField(default=timezone.now)
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
+    likes_count = models.IntegerField(default=0)  # Adicionando o campo likes_count
 
     class Meta:
         ordering = ['-timestamp']
@@ -32,9 +33,32 @@ class Post(models.Model):
     def __str__(self):
         return self.content
     
+    def update_likes_count(self):
+        self.likes_count = self.likes.count()
+        self.save()
+    
 class Relationship(models.Model):
     from_user = models.ForeignKey(User, related_name='relationships', on_delete=models.CASCADE)
     to_user = models.ForeignKey(User, related_name='related_to', on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.from_user} to {self.to_user}'
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.content
+
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes')
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f'{self.user.username} liked {self.post}'

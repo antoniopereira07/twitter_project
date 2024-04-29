@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect
-from .models import Profile, Post, Relationship
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Profile, Post, Relationship, Comment, Like
 
-from .forms import UserRegisterForm, PostForm, ProfileUpdateForm, UserUpdateForm
+from .forms import UserRegisterForm, PostForm, ProfileUpdateForm, UserUpdateForm, CommentForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -24,7 +24,11 @@ def home(request):
     context = {'posts': posts, 'form': form}
     return render(request, 'twitter/newsfeed.html', context)
 
-from django.shortcuts import redirect
+
+def delete(request, post_id):
+    post = Post.objects.get(id=post_id)
+    post.delete()
+    return redirect('home')  # Após excluir a postagem, redirecione para a página inicial
 
 def register(request):
     if request.method == 'POST':
@@ -94,3 +98,49 @@ def unfollow(request, username):
     rel.delete()
     return redirect('home')
 
+
+@login_required
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+            return redirect('home')  # Redirecione para a página inicial ou outra página desejada
+    else:
+        form = CommentForm()
+    # Renderize o mesmo template que você está usando para exibir os tweets
+    posts = Post.objects.all()  # Recupere todos os posts para exibir na página
+    context = {'form': form, 'posts': posts}  # Passe o formulário e os posts para o contexto
+    return render(request, 'twitter/newsfeed.html', context)
+
+
+def delete_comment(request, comment_id):
+    # Busque o comentário pelo ID
+    comment = get_object_or_404(Comment, id=comment_id)
+    
+    # Verifique se o usuário logado é o autor do comentário
+    if request.user == comment.user:
+        # Se for, exclua o comentário
+        comment.delete()
+    
+    # Redirecione de volta para a página onde o comentário foi feito
+    return redirect('home')
+
+
+@login_required
+def like_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    # Verifique se o usuário já curtiu a postagem
+    if Like.objects.filter(post=post, user=request.user).exists():
+        # Se sim, descurta
+        Like.objects.filter(post=post, user=request.user).delete()
+    else:
+        # Se não, curta
+        Like.objects.create(post=post, user=request.user)
+    # Atualize a contagem de curtidas da postagem
+    post.update_likes_count()  # Chame o método update_likes_count() após adicionar ou remover uma curtida
+    return redirect('home')

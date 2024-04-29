@@ -6,8 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O que está acontecendo?</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Asap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -20,7 +19,7 @@
 <body>
 
     <div class="container-fluid" style="padding: 0;">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand d-flex" style="color: white;" href="#">
                 <!-- Twitter logo -->
                 <img src="{% static 'img/twitter-brands.svg' %}" width="30" height="30" class="d-inline-block align-top"
@@ -45,7 +44,7 @@
             <div class="">
                 <div class="card " style="width: 18rem; text-align:center;border-radius: 20px;">
                     <img class="card-img-top rounded-circle"
-                        style="width:60%; position: relative;left: 62px;padding-top: 20px;"
+                        style="width: 60%; position: relative;left: 62px;padding-top: 20px;"
                         src="{{ request.user.profile.image.url }}"
                         alt="Card image cap">
                     <div class="card-body">
@@ -74,15 +73,15 @@
                 <div class="d-flex">
                     <div class="col-xs">
                         <!-- Image form -->
-                        <img src="../../static/img/toin.jpg" alt=""
-                            class="avatar">
+                        <img src="../../static/img/default.png" alt=""
+                            class="avatar rounded-circle">
                         <!-- Formulario -->
                     </div>
 
                     <!-- Formulario -->
                     <form class="col pr-0">
                         <textarea class="form-control w-100" id="contentsBox"
-                            placeholder="O que está acontecendo?"></textarea>
+                            placeholder="O que está acontecendo?" maxlength="140"></textarea>
                         <div class="container d-flex" style="padding: 1rem 0 0 0;">
                             <div id="leftBtn">
                                 <div id="charBadge" class="badge badge-pill badge-primary ml-2"
@@ -106,10 +105,10 @@
             <!-- Tweets -->
             <div id="tweetCards">
                 <!-- FOR LOOP HERE -->
-                <div class="tweet-wrap" style="border-radius:20px">
+                <div class="tweet-wrap">
                     <div class="tweet-header">
                         <img src="https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                            alt="" class="avatar">
+                            alt="" class="avatar rounded-circle">
                         <div class="tweet-header-info">
                             * based snow bunny <span>@yumjeezy</span><span>. Jun 27
                             </span>
@@ -207,6 +206,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/comment_form.js' %}"></script>
 
 </body>
 

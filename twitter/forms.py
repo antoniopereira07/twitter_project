@@ -1,8 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Post
-from .models import Profile
+from .models import Post, Profile, Comment
 
 class UserRegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
@@ -42,10 +41,8 @@ class UserLoginForm(forms.Form):
     )
 
 
-
-
 class PostForm(forms.ModelForm):
-    content = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control w-100', 'id':'cotentsBox', 'rows':'3', 'placeholder':'O que está acontecendo?'}))
+    content = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control w-100', 'id':'contentsBox', 'rows':'3', 'placeholder':'O que está acontecendo?', 'maxlength': '140'}))
 
     class Meta:
         model = Post
@@ -60,3 +57,11 @@ class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['image', 'bio']
+
+
+class CommentForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control w-100', 'id':'contentsBox', 'rows':'3', 'placeholder':'O que está acontecendo?', 'maxlength': '140'}))
+
+    class Meta:
+        model = Comment
+        fields = ['content']
