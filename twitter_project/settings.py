@@ -34,7 +34,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "AbcDef")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','antoniodev07.pythonanywhere.com']
+=======
+ALLOWED_HOSTS = ['localhost', '127.0.0.1','antoniodev07.pythonanywhere.com', '.vercel.app', '.now.sh']
+>>>>>>> 17aee9741a45a8da937a21b7c317a751c1c34846
 
 
 # Application definition
@@ -86,8 +90,17 @@ WSGI_APPLICATION = 'twitter_project.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+=======
+        'ENGINE': "django.db.backends.mysql",
+        'NAME': "antoniodev07$mydb",
+        'USER': "antoniodev07",
+        'PASSWORD': "a12345a%#",
+        'HOST': "antoniodev07.mysql.pythonanywhere-services.com",
+        'PORT': "3306",
+>>>>>>> 17aee9741a45a8da937a21b7c317a751c1c34846
     }
 }
 

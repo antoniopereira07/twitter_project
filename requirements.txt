@@ -1,8 +1,11 @@
 asgiref==3.8.1
 dj-database-url==2.1.0
 Django==5.0.3
+<<<<<<< HEAD
 gunicorn==21.2.0
 mysql-connector-python==8.3.0
+=======
+>>>>>>> 17aee9741a45a8da937a21b7c317a751c1c34846
 mysqlclient==2.2.4
 packaging==24.0
 pillow==10.2.0
