@@ -27,18 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.getenv("SECRET_KEY")
-# SECRET_KEY = 'django-insecure-h4*purb=h2oyj4q*ns(uj2t!4bu-p*y1!_dfr(ah3e6tq6!r07'
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "AbcDef")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','antoniodev07.pythonanywhere.com']
-=======
-ALLOWED_HOSTS = ['localhost', '127.0.0.1','antoniodev07.pythonanywhere.com', '.vercel.app', '.now.sh']
->>>>>>> 17aee9741a45a8da937a21b7c317a751c1c34846
 
 
 # Application definition
@@ -88,22 +83,6 @@ WSGI_APPLICATION = 'twitter_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-<<<<<<< HEAD
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-=======
-        'ENGINE': "django.db.backends.mysql",
-        'NAME': "antoniodev07$mydb",
-        'USER': "antoniodev07",
-        'PASSWORD': "a12345a%#",
-        'HOST': "antoniodev07.mysql.pythonanywhere-services.com",
-        'PORT': "3306",
->>>>>>> 17aee9741a45a8da937a21b7c317a751c1c34846
-    }
-}
-
 # mysql
 # DATABASES = {
 #     'default': {
@@ -127,14 +106,6 @@ DATABASES = {
         "PORT": os.environ.get("MYSQL_PORT:", "3306"),
     }
 }
-
-print("SECRET_KEY")
-print("MYSQL_ENGINE")
-print("MYSQL_DATABASE")
-print("MYSQL_USER")
-print("MYSQL_PASSWORD")
-print("MYSQL_HOST")
-print("MYSQL_PORT")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
